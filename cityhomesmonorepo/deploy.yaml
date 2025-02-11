@@ -1,0 +1,86 @@
+import:
+  - libs/deployer/index.php
+
+config:
+  repository: git@github.com:Joshua-Swiga/cityhomesmonorepo.git
+  sub_directory: apps/laravel
+  ssh_copy_id: ~/.ssh/id_ed25519.pub
+  remote_user: deployer
+  timezone: 'Africa/Nairobi'
+  php_version: '8.3'
+  pg_version: 16
+  public_path: public
+  base_deploy_path: /home/deployer
+  keep_releases: 5
+  base_domain: api.cityhomeskenya.co.ke
+  default_timeout: 5000
+
+hosts:
+  prod:
+    hostname: '165.232.188.246'
+    deploy_path: '{{base_deploy_path}}/{{base_domain}}-production'
+    api_domain: '{{base_domain}}'
+    'crontab:identifier': '{{base_domain}}'
+    branch: main
+    domain: '{{base_domain}}'
+
+tasks:
+  server:
+    # Server
+    - server:check
+    - server:timezone
+    - server:locale
+    - server:update
+    - server:upgrade
+    - server:install
+    - server:firewall
+    - server:deployer
+    - server:verify
+
+    # Caddy
+    - caddy:install
+    - caddy:verify
+
+    # PHP
+    - php:update
+    - php:install
+    - php:composer
+    - php:verify
+
+    # PostgreSQL
+    - postgresql:install
+    - postgresql:verify
+
+  postgresql:db:
+    - server:check
+    - postgresql:create
+    - postgresql:restart
+    - postgresql:list:db
+    - postgresql:list:users
+
+  website:
+    - server:check
+    - provision:website
+    - caddy:reload
+
+  deploy:
+    - deploy:info
+    - deploy:setup
+    - deploy:lock
+    - deploy:release
+    - deploy:update_code
+    - deploy:shared
+    - deploy:writable
+    - deploy:vendors
+    - artisan:optimize:clear
+    - artisan:optimize
+    - artisan:migrate
+    - deploy:symlink
+    - deploy:unlock
+    - deploy:cleanup
+    - deploy:success
+
+after:
+  deploy:failed: deploy:unlock
+  deploy:success:
+    - releases
