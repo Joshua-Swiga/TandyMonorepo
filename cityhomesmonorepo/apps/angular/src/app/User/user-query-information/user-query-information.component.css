@@ -1,0 +1,96 @@
+/* Base container styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 2400px; /* Increased max-width */
+    margin: 0 auto;
+}
+
+/* Styling for each row */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card styling */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%; /* Full width */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card text styling */
+.card-text {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    word-wrap: break-word; /* Ensure text breaks properly */
+}
+
+/* Button styling */
+button {
+    background-color: #d9534f; /* Red button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    align-self: center;
+    font-size: 16px;
+    width: 100%; /* Full-width button */
+}
+
+button:hover {
+    background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-6, .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+    .col-md-6 {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-4 {
+        flex: 0 0 32%; /* Increased width for larger screens */
+        max-width: 300%;
+    }
+}
+
+/* No data alert styling */
+.alert {
+    background-color: #e9ecef;
+    color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}

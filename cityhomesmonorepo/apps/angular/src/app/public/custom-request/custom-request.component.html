@@ -1,0 +1,38 @@
+<div *ngIf="screenLoader">
+  <app-loader></app-loader>
+</div>
+
+<div *ngIf="processingRequest && !screenLoader" class="loading-container">
+    <div class="loading-content">
+      <p>Please wait while your request is being processed...</p>
+      <div class="spinner">
+        <!-- SVG Spinner -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#007bff" stroke-width="10" stroke-dasharray="164.93361431346415 56.97787143782138">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50"></animateTransform>
+          </circle>
+        </svg>
+      </div>
+  
+      <!-- Alternative CSS-only Spinner -->
+      <!-- Uncomment this div and comment out the SVG block above to use the CSS spinner -->
+      <!-- <div class="css-spinner"></div> -->
+    </div>
+  </div>
+  
+  <!-- Query Data -->
+  <div *ngIf="!processingRequest" class="query-container">
+    <div *ngFor="let query of queryData" class="query-card">
+      <h3>Query Details of {{ query.name }}</h3>
+      <p><strong>ID:</strong> {{ query.id }}</p>
+      <p><strong>Phone Number:</strong> {{ query.phone_number }}</p>
+      <p><strong>Email:</strong> {{ query.email }}</p>
+      <p><strong>Category:</strong> {{ query.category }}</p>
+      <p><strong>Price Range:</strong> {{ query.priceRange }}</p>
+      <p><strong>Event Type:</strong> {{ query.evntType }}</p>
+      <p><strong>Additional Service Requirement:</strong> {{ query.additionalServiceRequirenent }}</p>
+      <p><strong>Created At:</strong> {{ query.created_at | date:'short' }}</p>
+      <button class="delete-button" (click)="deleteUserQueryById(query.id)">Delete Query</button>
+    </div>
+  </div>
+  

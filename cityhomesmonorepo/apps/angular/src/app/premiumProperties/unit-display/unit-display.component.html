@@ -1,0 +1,31 @@
+<div *ngIf="screenLoader">
+  <app-loader></app-loader>
+</div>
+
+
+<div *ngIf="!screenLoader" class="location-list-wrapper">
+    <div class="location-list">
+      <div *ngFor="let unit of data.units.units | customPipeName: searchCriteria; let i = index" class="unit-card">
+        <div class="unit-image-wrapper" *ngIf="unit.images.length > 0">
+          <img [src]="unit.images[0].original_url" alt="Unit Image" class="unit-image">
+        </div>
+        <div class="unit-details">
+          <div class="unit-info">
+            <h2>{{unit.title}} - {{unit.subtitle}}</h2>
+            <p><span>Category:</span> {{unit.category}}</p>
+            <p><span>Accommodation Info:</span> {{unit.accomodation_information}}</p>
+            <p><span>Bedrooms:</span> {{unit.number_of_bedrooms}}</p>
+            <p><span>Bathrooms:</span> {{unit.number_of_bathrooms}}</p>
+            <p><span>Price:</span> {{unit.price_information}}</p>
+            <p><span>Booked:</span> {{unit.is_booked ? 'Yes' : 'No'}}</p>
+          </div>
+        </div>
+        <div class="action">
+          <button routerLink="/book-unit/{{unit.id}}" class="book-now-button">
+            Book Now!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+

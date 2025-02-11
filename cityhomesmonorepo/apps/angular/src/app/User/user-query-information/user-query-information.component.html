@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div *ngIf="data?.length > 0; else noData">
+      <div *ngFor="let item of data" class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-3">{{ item.name }}</h5>
+            <p class="card-text"><strong>Email:</strong> {{ item.email }}</p>
+            <p class="card-text"><strong>Phone:</strong> {{ item.phone_number }}</p>
+            <p class="card-text"><strong>Message:</strong> {{ item.message }}</p>
+            <p class="card-text text-muted"><small><strong>Created:</strong> {{ item.created_at | date: 'short' }}</small></p>
+            <p class="card-text text-muted"><small><strong>Updated:</strong> {{ item.updated_at | date: 'short' }}</small></p>
+            <button class="btn btn-danger mt-3" (click)="deleteQuery(item.id)">
+              Delete Query
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div class="alert alert-info text-center mt-5">
+    No contact information available.
+  </div>
+</ng-template>

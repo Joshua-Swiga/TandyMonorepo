@@ -1,0 +1,6 @@
+{
+  "name": "@cityhomes/deployer",
+  "scripts": {
+      "fmt": "composer format"
+  }
+}

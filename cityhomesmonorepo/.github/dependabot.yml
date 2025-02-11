@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    target-branch: main
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 100
+    rebase-strategy: auto
+
+  - package-ecosystem: npm
+    target-branch: main
+    directory: '/'
+    rebase-strategy: auto
+
+  - package-ecosystem: composer
+    target-branch: main
+    directory: '/apps/laravel'
+    rebase-strategy: auto

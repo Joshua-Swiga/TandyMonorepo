@@ -1,0 +1,94 @@
+<div class="container" 
+     style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f8f9fa;">
+  
+  <div *ngIf="processingData" 
+       style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100%;">
+    <div style="text-align: center; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+      <p style="font-size: 1.2rem; color: #333; margin: 0;">Please wait while your request is being processed...</p>
+      <div style="margin-top: 20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin: auto; background: transparent; display: block;" width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+          <circle cx="50" cy="50" fill="none" stroke="#007bff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+          </circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!processingData" style="width: 100%; max-width: 600px; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+    <form [formGroup]="registration_form" (ngSubmit)="onSubmit()" class="registration-form">
+      <div class="form-group" style="margin-bottom: 20px;">
+        <input type="text" formControlName="name" name="name" id="name" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;">
+        <label for="name" class="form-label" style="margin-top: 10px; font-weight: bold;">Name</label>
+        <div *ngIf="registration_form.get('name')?.invalid && (registration_form.get('name')?.dirty || registration_form.get('name')?.touched)">
+          <p class="error-message" style="color: red;">Please provide a valid name value!</p>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px;">
+        <input type="email" formControlName="email" name="email" id="email" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;">
+        <label for="email" class="form-label" style="margin-top: 10px; font-weight: bold;">Email</label>
+        <div *ngIf="registration_form.get('email')?.invalid && (registration_form.get('email')?.dirty || registration_form.get('email')?.touched)">
+          <p class="error-message" style="color: red;">Please provide a valid email!</p>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px;">
+        <input [type]="showPassword ? 'text' : 'password'" formControlName="password" name="password" id="password" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;">
+        <label for="password" class="form-label" style="margin-top: 10px; font-weight: bold;">Password</label>
+        <div *ngIf="registration_form.get('password')?.invalid && (registration_form.get('password')?.dirty || registration_form.get('password')?.touched)">
+          <p class="error-message" style="color: red;">Please provide a valid password!</p>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px;">
+        <input type="text" formControlName="phone_number" name="phone_number" id="phone_number" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;">
+        <label for="phone_number" class="form-label" style="margin-top: 10px; font-weight: bold;">Phone Number</label>
+        <div *ngIf="registration_form.get('phone_number')?.invalid && (registration_form.get('phone_number')?.dirty || registration_form.get('phone_number')?.touched)">
+          <p class="error-message" style="color: red;">Please provide a valid phone number!</p>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px;">
+        <textarea formControlName="generalPropertyOverview" name="generalPropertyOverview" id="generalPropertyOverview" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;"></textarea>
+        <label for="generalPropertyOverview" class="form-label" style="margin-top: 10px; font-weight: bold;">General Property Overview</label>
+        <div *ngIf="registration_form.get('generalPropertyOverview')?.invalid && (registration_form.get('generalPropertyOverview')?.dirty || registration_form.get('generalPropertyOverview')?.touched)">
+          <p class="error-message" style="color: red;">Please provide a general property overview!</p>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px;">
+        <textarea formControlName="description" name="description" id="description" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;"></textarea>
+        <label for="description" class="form-label" style="margin-top: 10px; font-weight: bold;">Description</label>
+        <div *ngIf="registration_form.get('description')?.invalid && (registration_form.get('description')?.dirty || registration_form.get('description')?.touched)">
+          <p class="error-message" style="color: red;">Please provide a description!</p>
+        </div>
+      </div>
+
+      <!-- Profile Photo Upload -->
+      <div class="form-group" style="margin-bottom: 20px;">
+        <input type="file" (change)="onFileSelected($event)" name="profile_photo" id="profile_photo" class="form-control" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;">
+        <label for="profile_photo" class="form-label" style="margin-top: 10px; font-weight: bold;">Profile Photo</label>
+      </div>
+
+      <div class="form-group-checkbox" style="margin-bottom: 20px;">
+        <input type="checkbox" id="show-password" (change)="togglePasswordVisibility()" style="margin-right: 10px;">
+        <label for="show-password" class="form-label-checkbox" style="font-weight: bold;">Show Password</label>
+      </div>
+
+      <!-- Updated is_admin field as a dropdown -->
+      <div class="form-group" style="margin-bottom: 20px;">
+        <label for="is_admin" class="form-label" style="font-weight: bold;">Admin?</label>
+        <select formControlName="is_admin" id="is_admin" class="form-control-dropdown" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da;">
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="registration_form.invalid" class="submit-button" 
+              style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        Register User
+      </button>
+    </form>
+  </div>
+</div>

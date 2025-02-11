@@ -1,0 +1,162 @@
+<!-- Loading Spinner -->
+<div *ngIf="registeringData" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f4f8;">
+  <div style="text-align: center; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+    <p style="font-size: 1.2rem; color: #333; margin: 0;">Please wait while your request is being processed...</p>
+    <div style="margin-top: 20px;">
+      <svg xmlns="http://www.w3.org/2000/svg" style="margin: auto; background: transparent; display: block;" width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <circle cx="50" cy="50" fill="none" stroke="#007bff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+        </circle>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container" *ngIf="!registeringData">
+  
+  <!-- Unit Form -->
+  <div class="card">
+    <h2>Edit Unit Information</h2>
+    <form [formGroup]="unitValidationForm" (ngSubmit)="editUnit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input name="title" id="title" formControlName="title" placeholder="Enter unit title" class="form-control">
+        <div *ngIf="unitValidationForm.get('title')?.invalid && (unitValidationForm.get('title')?.dirty || unitValidationForm.get('title')?.touched)">
+          <p class="error-message">Please provide a valid title!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subtitle">Subtitle</label>
+        <input name="subtitle" id="subtitle" formControlName="subtitle" placeholder="Enter unit subtitle" class="form-control">
+        <div *ngIf="unitValidationForm.get('subtitle')?.invalid && (unitValidationForm.get('subtitle')?.dirty || unitValidationForm.get('subtitle')?.touched)">
+          <p class="error-message">Please provide a valid subtitle!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input name="category" id="category" formControlName="category" placeholder="Enter unit category" class="form-control">
+        <div *ngIf="unitValidationForm.get('category')?.invalid && (unitValidationForm.get('category')?.dirty || unitValidationForm.get('category')?.touched)">
+          <p class="error-message">Please provide a valid category!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="accomodation_information">Accommodation Information</label>
+        <input name="accomodation_information" id="accomodation_information" formControlName="accomodation_information" placeholder="Enter accommodation information" class="form-control">
+        <div *ngIf="unitValidationForm.get('accomodation_information')?.invalid && (unitValidationForm.get('accomodation_information')?.dirty || unitValidationForm.get('accomodation_information')?.touched)">
+          <p class="error-message">Please provide valid accommodation information!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price_information">Price Information</label>
+        <input name="price_information" id="price_information" formControlName="price_information" placeholder="Enter price information" class="form-control">
+        <div *ngIf="unitValidationForm.get('price_information')?.invalid && (unitValidationForm.get('price_information')?.dirty || unitValidationForm.get('price_information')?.touched)">
+          <p class="error-message">Please provide valid price information!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="number_of_bathrooms">Number of Bathrooms</label>
+        <input name="number_of_bathrooms" id="number_of_bathrooms" formControlName="number_of_bathrooms" placeholder="Enter number of bathrooms" class="form-control">
+        <div *ngIf="unitValidationForm.get('number_of_bathrooms')?.invalid && (unitValidationForm.get('number_of_bathrooms')?.dirty || unitValidationForm.get('number_of_bathrooms')?.touched)">
+          <p class="error-message">Please provide a valid number of bathrooms!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="number_of_bedrooms">Number of Bedrooms</label>
+        <input name="number_of_bedrooms" id="number_of_bedrooms" formControlName="number_of_bedrooms" placeholder="Enter number of bedrooms" class="form-control">
+        <div *ngIf="unitValidationForm.get('number_of_bedrooms')?.invalid && (unitValidationForm.get('number_of_bedrooms')?.dirty || unitValidationForm.get('number_of_bedrooms')?.touched)">
+          <p class="error-message">Please provide a valid number of bedrooms!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="is_booked">Is Booked</label>
+        <input name="is_booked" id="is_booked" type="checkbox" formControlName="is_booked" class="form-control">
+      </div>
+
+      <button type="submit" class="submit-button">Edit Unit</button>
+    </form>
+
+    <p style="background-color: #f8d7da; color: #721c24; padding: 15px 20px; border-left: 5px solid #f5c6cb; border-radius: 5px; font-size: 16px; font-family: 'Arial', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+      <strong>Warning:</strong> Deleting a unit will erase all its associated data. This includes images, location, and amenities.
+    </p>
+    <button (click)="deleteUnit(unitId)" class="submit-button" style="background-color: red;">Delete Unit</button>
+  </div>
+
+  <!-- Location Form -->
+  <div class="card">
+    <h2>Edit Location Information</h2>
+    <form [formGroup]="locationValidationForm" (ngSubmit)="editLocationData()">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input name="city" id="city" formControlName="city" placeholder="Enter city" class="form-control">
+        <div *ngIf="locationValidationForm.get('city')?.invalid && (locationValidationForm.get('city')?.dirty || locationValidationForm.get('city')?.touched)">
+          <p class="error-message">Please provide a valid city!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <input name="state" id="state" formControlName="state" placeholder="Enter state" class="form-control">
+        <div *ngIf="locationValidationForm.get('state')?.invalid && (locationValidationForm.get('state')?.dirty || locationValidationForm.get('state')?.touched)">
+          <p class="error-message">Please provide a valid state!</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input name="country" id="country" formControlName="country" placeholder="Enter country" class="form-control">
+        <div *ngIf="locationValidationForm.get('country')?.invalid && (locationValidationForm.get('country')?.dirty || locationValidationForm.get('country')?.touched)">
+          <p class="error-message">Please provide a valid country!</p>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="locationValidationForm.invalid">Edit Location</button>
+    </form>
+  </div>
+
+  <!-- Amenity Form -->
+  <div class="card">
+    <h2>Edit Amenities</h2>
+    <form [formGroup]="amenityValidationForm" (ngSubmit)="editAmenityFunction()">
+      <div class="form-group">
+        <label for="amenities">Amenity</label>
+        <input name="amenities" id="amenities" formControlName="amenities" placeholder="Enter amenity" class="form-control">
+        <div *ngIf="amenityValidationForm.get('amenities')?.invalid && (amenityValidationForm.get('amenities')?.dirty || amenityValidationForm.get('amenities')?.touched)">
+          <p class="error-message">Please provide a valid amenity!</p>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="amenityValidationForm.invalid">Edit Amenity</button>
+    </form>
+    <br><br>
+
+    <form (submit)="uploadImage()">
+      <div>
+        <label for="imageUpload">Enhance this unit with additional images.</label>
+        <hr>
+        <input type="file" id="imageUpload" (change)="convertToBase64($event)">
+        <hr>
+      </div>
+      <button type="submit" class="responsive-button">Add Image to Unit</button>
+    </form>
+    <br><br>
+    
+    <div class="image-gallery" *ngIf="unit?.images?.length">
+      <h3>Unit Images</h3>
+      <div class="images-wrapper">
+        <div *ngFor="let image of unit.images" class="image-container">
+          <img [src]="image.original_url" [alt]="image.name" class="unit-image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>

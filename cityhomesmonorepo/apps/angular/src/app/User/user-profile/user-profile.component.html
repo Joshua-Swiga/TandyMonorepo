@@ -1,0 +1,89 @@
+<div *ngIf="loading" class="loading-message">Loading...</div>
+<div *ngIf="!loading" class="profile-card">
+  <div class="profile-header">
+    <div class="profile-details">
+      <img [src]="profilePicture" alt="Profile Picture" class="profile-picture" style="width: 100px; height: 100px; border-radius: 50%;">
+      <h2>Welcome: {{userData.name | titlecase }}</h2>
+      <p><b>Email:</b> {{userData.email}}</p>
+      <p><b>Phone:</b> {{userData.phone_number}}</p>
+      <p><b>Description:</b> {{userData.description}}</p>
+      <p><b>General Overview:</b> {{userData.general_property_overview}}</p>
+      <p><b>Member Since:</b> {{userData.created_at | date:'MMMM d, y, h:mm a'}}</p>
+    </div>
+  </div>
+  <div *ngIf="userData.name === administrativename else elseBlock" class="dropdown-container">
+    <button class="dropdown-button">Administrative Operations</button>
+
+    <div class="dropdown-content">
+        <li>
+            <a routerLink="/view-users">View, Edit or Delete other Admins</a>
+        </li>
+        <hr>
+        <li>
+            <a routerLink="/view-location">See and Update all Locations</a>
+        </li>
+        <hr>
+        <li>
+            <a routerLink="/view-custom-unit">See All Custom Units</a>
+        </li>
+        <hr>
+        <li>
+            <a routerLink="/add-unit">Register Unit</a>
+        </li>
+        <hr>
+        <li>
+            <a routerLink="/register">Add New Admin</a>
+        </li>
+        <hr>
+        <li>
+          <a routerLink="/view-user/{{userData.id}}">Edit Profile Information</a>
+        </li>
+        <hr>
+        <li>
+          <a routerLink="/messages-from-clients">See messages from clients</a>
+        </li>
+
+    </div>
+
+  </div>
+  <ng-template #elseBlock>
+    <div class="dropdown-container">
+      <button class="dropdown-button">Administrative Operations</button>
+      <div class="dropdown-content">
+        <ul>
+          <li>
+            <a routerLink="/add-unit">Register Unit</a>
+          </li>
+          <hr>
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+
+  <br><br>
+  <div class="unit-grid">
+    <div *ngFor="let unitData of unitsData" class="unit-card">
+      <div *ngIf="unitData.images.length > 0" class="unit-image-wrapper">
+        <div *ngIf="unitData.images && unitData.images.length> 0"> 
+          <!-- Accessing and deiplaying the first image -->
+          <img [src]="unitData.images[0].original_url" alt="Unit Image" class="unit-image">
+        </div>
+      </div>
+      <h2>Unit Details</h2>
+      <p><b>Title:</b> {{unitData.unit.title}}</p>
+      <p><b>Subtitle:</b> {{unitData.unit.subtitle}}</p>
+      <p><b>Category:</b> {{unitData.unit.category}}</p>
+      <p><b>Accommodation Info:</b> {{unitData.unit.accomodation_information}}</p>
+      <p><b>Price Information:</b> {{unitData.unit.price_information}}</p>
+      <p><b>Booked:</b> {{unitData.unit.is_booked ? 'Yes' : 'No'}}</p>
+      <hr>
+
+
+      <div class="edit-button-container">
+        <button [routerLink]="['/edit-unit', unitData.unit.id]" class="edit-button">
+          Edit Unit Information
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

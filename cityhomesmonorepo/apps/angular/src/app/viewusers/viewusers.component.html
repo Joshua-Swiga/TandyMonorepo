@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Welcome {{ currentUser | uppercase }}</h1>
+
+  <div class="search-container">
+    <input type="text" [(ngModel)]="userBeingSearched" class="search-bar" placeholder="Search User By Name">
+  </div>
+
+  <div class="user-list" *ngIf="currentUser === adminName; else notSwiga">
+    <div *ngFor="let user of allusers | filterUser:userBeingSearched" class="user-card">
+      <a [routerLink]="['/see-other-user/', user.name]" class="user-name">{{ user.name }}</a>
+      <p class="user-email">{{ user.email }}</p>
+      <p class="user-info">Admin: {{ user.is_admin ? 'Yes' : 'No' }}</p>
+      <div class="user-actions">
+        <button class="edit-button" (click)="editUser(user.id)">Edit</button>
+        <button class="delete-button" (click)="removeUser(user.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #notSwiga>
+    <div class="user-list">
+      <div *ngFor="let user of allusers" class="user-card">
+        
+          <p class="user-name">{{ user.name }}</p>
+        
+        <p class="user-email">{{ user.email }}</p>
+        <p class="user-info">Admin: {{ user.is_admin ? 'Yes' : 'No' }}</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

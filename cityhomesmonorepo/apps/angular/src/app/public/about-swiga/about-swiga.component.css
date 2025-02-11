@@ -1,0 +1,280 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: #333;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #ff8c00;
+}
+
+a:hover {
+    color: #e67600;
+}
+
+/* Header */
+.header {
+    position: relative;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.header h1 {
+    font-size: 3.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.header p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.2s ease-in-out;
+}
+
+.header .cta {
+    padding: 15px 30px;
+    background-color: #ff8c00;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.header .cta:hover {
+    background-color: #e67600;
+    transform: translateY(-5px);
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background-color: #ff8c00;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+}
+
+.about-section,
+.skills-section,
+.experience-section,
+.projects-section,
+.education-section {
+    background-color: #fff;
+    margin-bottom: 30px;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.about-section:hover,
+.skills-section:hover,
+.experience-section:hover,
+.projects-section:hover,
+.education-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.skills-container,
+.experience-container,
+.projects-container,
+.education-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/* Skill, Job, Project, and Education Cards */
+.skill,
+.job,
+.project,
+.education {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 45%;
+}
+
+.skill:hover,
+.job:hover,
+.project:hover,
+.education:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill h3,
+.job h3,
+.project h3,
+.education h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #ff8c00;
+}
+
+.skill p,
+.job p,
+.project p,
+.education p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #333;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.contact-section a {
+    color: #ff8c00;
+}
+
+.contact-section a:hover {
+    color: #e67600;
+}
+
+/* Footer */
+.footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5em;
+    }
+
+    .header p {
+        font-size: 1.2em;
+    }
+
+    .skills-container,
+    .experience-container,
+    .projects-container,
+    .education-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skill,
+    .job,
+    .project,
+    .education {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .header {
+        height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .header p {
+        font-size: 1em;
+    }
+
+    .header .cta {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    section {
+        padding: 40px 15px;
+    }
+
+    .header {
+        height: 50vh;
+    }
+}

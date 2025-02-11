@@ -1,0 +1,123 @@
+/* General Container Styling */
+.query-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+/* Individual Query Card Styling */
+.query-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 15px;
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.query-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading Styling */
+.query-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Text Styling */
+.query-card p {
+    font-size: 1em;
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.query-card p strong {
+    color: #2c3e50;
+}
+
+/* Delete Button Styling */
+.delete-button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+}
+
+.delete-button:active {
+    transform: translateY(1px);
+}
+
+/* Loading Spinner Styling */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f8;
+}
+
+.loading-content {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.loading-content p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+.spinner {
+    margin-top: 20px;
+}
+
+.spinner svg {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    display: block;
+}
+
+/* CSS-only Spinner Styling */
+.css-spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #007bff; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

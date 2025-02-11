@@ -1,0 +1,89 @@
+<body>
+    <!-- Hero Section -->
+    <header class="hero-section" style="background-image: url('assets/images/homepage.jpg'); padding: 100px 20px; text-align: center; color: white;">
+        <div class="hero-content">
+            <h1>Find Your Perfect Home with City Homes</h1>
+            <p>We are dedicated to helping you discover the ideal home that matches your desires and needs. Explore our services and let us guide you through the process.</p>
+        </div>
+    </header>
+
+    <!-- Loading Spinner -->
+    <div *ngIf="processingRequest" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f4f8;">
+        <div style="text-align: center; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+            <p style="font-size: 1.2rem; color: #333; margin: 0;">Please wait while your request is being processed...</p>
+            <div style="margin-top: 20px;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="margin: auto; background: transparent; display: block;" width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <circle cx="50" cy="50" fill="none" stroke="#007bff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+                    </circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <div *ngIf="!processingRequest">
+        <section class="form-section" style="padding: 40px 20px; text-align: center;">
+            <h2>Let Us Help You Find Your Perfect Home</h2>
+            <p>Please fill out the form below with your preferences and details. Our team will get in touch with you to assist with your request.</p>
+            <form [formGroup]="queryForm" (ngSubmit)="onSubmitUserRequest()" class="query-form" style="max-width: 600px; margin: 0 auto; text-align: left;">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="curentUserName">Your Name</label>
+                    <input type="text" id="curentUserName" formControlName="curentUserName" required aria-label="Your Name" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="userPhoneNumber">Phone Number</label>
+                    <input type="text" id="userPhoneNumber" formControlName="userPhoneNumber" required aria-label="Phone Number" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="userEmail">Email</label>
+                    <input type="email" id="userEmail" formControlName="userEmail" required aria-label="Email" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="categoryPreference">House Preference</label>
+                    <input type="text" id="categoryPreference" formControlName="categoryPreference" required aria-label="House Preference" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="unitPricing">Price Range</label>
+                    <input type="text" id="unitPricing" formControlName="unitPricing" required aria-label="Price Range" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="userEventType">Event Type</label>
+                    <input type="text" id="userEventType" formControlName="userEventType" required aria-label="Event Type" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="additionalRequirement">Additional Requirements</label>
+                    <textarea id="additionalRequirement" formControlName="additionalRequirement" aria-label="Additional Requirements" style="padding: 15px; font-size: 1rem; border-radius: 5px; border: 1px solid #ced4da; width: 100%;"></textarea>
+                </div>
+                <button type="submit" class="submit-button" style="background-color: #007bff; color: white; padding: 15px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Submit Request</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer" style="background-color: #333; color: white; padding: 40px 20px; text-align: center;">
+        <div class="footer-content" style="display: flex; justify-content: space-between; max-width: 1000px; margin: 0 auto; flex-wrap: wrap;">
+            <div class="footer-column" style="margin-bottom: 20px;">
+                <h4>About Us</h4>
+                <p>City Homes is committed to providing the best real estate services. We are here to help you find your perfect home with personalized service and attention to detail.</p>
+            </div>
+            <div class="footer-column" style="margin-bottom: 20px;">
+                <h4>Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">About Us</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Services</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column" style="margin-bottom: 20px;">
+                <h4>Contact Us</h4>
+                <p><strong>Phone:</strong> +254 757 422260</p>
+                <p><strong>Email:</strong> Kenyacityhomes(at)gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom" style="margin-top: 20px;">
+            <p>© 2024 City Homes. All rights reserved.</p>
+        </div>
+    </footer>
+</body>

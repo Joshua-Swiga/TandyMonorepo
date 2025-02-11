@@ -1,0 +1,28 @@
+{
+    "name": "grayarlltd/deployer",
+    "description": "A library for deploying application to server",
+    "type": "library",
+    "require": {
+        "deployer/deployer": "^7.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Njogu Amos",
+            "email": "njoguamos@gmail.com"
+        }
+    ],
+  "autoload": {
+    "psr-4": {
+      "Deployer\\": "vendor/deployer/deployer/src/"
+    }
+  },
+    "minimum-stability": "stable",
+    "require-dev": {
+        "laravel/pint": "^1.16"
+    },
+  "scripts": {
+    "test": "vendor/bin/pest",
+    "format" : "./vendor/bin/pint --config ./../pint-rules/pint.json"
+  }
+}

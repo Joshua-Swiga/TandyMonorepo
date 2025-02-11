@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+
+<div *ngIf="screenLoader">
+  <app-loader></app-loader>
+</div>
+
+<body *ngIf = "!screenLoader">
+  <div class="centered">
+    <div>
+      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
+        <strong>Discover</strong> our curated collection of units for every style. Whether modern or classic, find your perfect match. Our <em>certified</em> dealers provide expert guidance. Trust us for quality and satisfaction. Find the <span style="color: #0056b3;">perfect unit</span> today.
+      </p>
+    </div>
+
+    <hr>
+    <div>
+      <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
+        Search Based on the Following Criteria
+      </h3>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input 
+      
+      [(ngModel)]="searchCriteria" 
+      placeholder="Location | Price | Bedrooms" 
+      style="padding: 10px 15px; width: 100%; max-width: 600px; font-size: 16px; border: 2px solid #ccc; border-radius: 5px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease;"
+      onfocus="this.style.borderColor='#ff8c00'; this.style.boxShadow='0 4px 6px rgba(255, 140, 0, 0.5)';"
+      onblur="this.style.borderColor='#ccc'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+    
+    >
+    </div>
+
+    <div class="location-list-wrapper">
+      <div class="location-list">
+        <div *ngFor="let unit of data.units.units | customPipeName: searchCriteria; let i = index" class="unit-card">
+          <div class="unit-image-wrapper" *ngIf="unit.images.length > 0">
+            <img [src]="unit.images[0].original_url" alt="Unit Image" class="unit-image">
+          </div>
+          <div class="unit-details">
+            <div class="unit-info">
+              <h2>{{unit.title}} - {{unit.subtitle}}</h2>
+              <p><span>Category:</span> {{unit.category}}</p>
+              <p><span>Accommodation Info:</span> {{unit.accomodation_information}}</p>
+              <p><span>Bedrooms:</span> {{unit.number_of_bedrooms}}</p>
+              <p><span>Bathrooms:</span> {{unit.number_of_bathrooms}}</p>
+              <p><span>Price:</span> {{unit.price_information}}</p>
+              <p><span>Booked:</span> {{unit.is_booked ? 'Yes' : 'No'}}</p>
+            </div>
+          </div>
+          <div class="action">
+            <button routerLink="/book-unit/{{unit.id}}" class="book-now-button">
+              Book Now!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

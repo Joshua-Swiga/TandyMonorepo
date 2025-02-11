@@ -1,0 +1,7 @@
+<div *ngFor="let image of imageData">
+    <!-- Assuming `image.image` contains descriptive text, not the actual image URL -->
+    <div>
+        <img *ngIf="image.imageUrl" [routerLink]="'book-unit/' + image.unit_id" [src]="image.imageUrl" alt="Image for unit {{ image.unit_id }}">
+        <p>{{ image.image }}</p> <!-- Displaying the description -->
+    </div>
+</div>
