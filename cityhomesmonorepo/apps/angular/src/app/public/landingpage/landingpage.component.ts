@@ -30,7 +30,7 @@ export class LandingPageComponent {
   onWaitForContentToLoad(){
     setTimeout(() => {
       this.screenLoader = false; // Hide the loader after 10 seconds
-    }, 3000); // 10000ms = 10 seconds
+    }, 1000); // 10000ms = 10 seconds
   }
   
   onSubmit() {

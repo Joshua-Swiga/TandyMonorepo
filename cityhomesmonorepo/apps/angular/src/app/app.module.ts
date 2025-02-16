@@ -35,6 +35,7 @@ import { FilterUserPipe } from './pipes/filterUser/filter-user.pipe';
 import { UserQueryInformationComponent } from './User/user-query-information/user-query-information.component';
 import { UnitDisplayComponent } from './premiumProperties/unit-display/unit-display.component';
 import { LoaderComponent } from './public/loader/loader.component';
+import { FurnitureComponent } from './furniture/furniture.component';
 
 
 @NgModule({ // This is where we register components that have been created.
@@ -67,6 +68,7 @@ import { LoaderComponent } from './public/loader/loader.component';
       UserQueryInformationComponent,
       UnitDisplayComponent,
       LoaderComponent,
+      FurnitureComponent,
   ],
 
 
