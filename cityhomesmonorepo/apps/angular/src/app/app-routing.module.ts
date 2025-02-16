@@ -22,6 +22,7 @@ import { UserQueryInformationComponent } from './User/user-query-information/use
 import { PublicViewComponent } from './User/public-view/public-view.component';
 import { UnitDisplayComponent } from './premiumProperties/unit-display/unit-display.component';
 import { LoaderComponent } from './public/loader/loader.component';
+import { FurnitureComponent } from './furniture/furniture.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
   { path: `messages-from-clients`, component: UserQueryInformationComponent, title: `messages-from-clients` },
   { path: `see-other-user/:id`, component: PublicViewComponent, title: `public-view`},
   { path: `good-option`, component: UnitDisplayComponent, title: `good-option` },
-  { path:`loader`, component: LoaderComponent, title: `loader` }
+  { path:`loader`, component: LoaderComponent, title: `loader` },
+  { path:  `explore-furniture`, component: FurnitureComponent, title: `explore-furniture` }
   // { path: `test`, component: TestComponent }
   
 ];

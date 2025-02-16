@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-us',
@@ -6,10 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-us.component.css']
 })
 export class AboutUsComponent {
-  redirectToWhatsApp() {
-    const phonenumber = '254757422260';
-    const message = `Hi there! Im intrested in the jersies mentioned on your website. Can I get more information about them? Thank you!`;
-    const url = `https://wa.me/${phonenumber}?text=${encodeURIComponent(message)}`;
-    window.location.href = url;
+  constructor(private router: Router){
+
+  }
+  
+  
+  redirectToFurnitures() {
+    this.router.navigate(['/explore-furniture'])
 }
 }

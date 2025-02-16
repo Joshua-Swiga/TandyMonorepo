@@ -57,26 +57,30 @@
     </div>
   </section>
 
-  <!-- Jersey Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="image-container">
-          <img src="assets/images/jerzy.jpeg" alt="Jersey Image">
-        </div>
-        <div class="text-content">
-          <h1>Get Your Custom Jersey</h1>
-          <p>
-            Our jerseys are available in all sizes and are tailored to meet your specific desires. Whether you’re looking to represent your team or show off your personal style, our jerseys are designed with high-quality materials to ensure comfort and durability.
-            <br>
-            <button class="custom-button" style="background-color: #25D366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" (click)="redirectToWhatsApp()">
-              Text Admin on WhatsApp
-            </button>
-          </p>
-        </div>
+ <!-- Furniture Section -->
+<section class="hero">
+  <div class="container">
+      <div class="hero-content" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 50px 0;">
+          <div class="image-container" style="flex: 1; text-align: center;">
+            <!-- Add picture -->
+              <img src="assets/images/furniture.jpeg" alt="Luxury Furniture" style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+          </div>
+          <div class="text-content" style="flex: 1; text-align: left;">
+              <h1 style="color: #333; font-size: 2rem; margin-bottom: 15px;">Upgrade Your Living Space</h1>
+              <p style="color: #555; font-size: 1rem; line-height: 1.6;">
+                  Discover high-quality, stylish furniture designed to transform your home. Whether you're looking for a cozy sofa, a modern dining set, or a sleek office desk, we have the perfect pieces to match your taste and lifestyle.
+                  <br><br>
+                  Our collection is crafted with premium materials, ensuring durability and elegance. Make your home a reflection of your style with our exquisite furniture pieces.
+              </p>
+              <br>
+              <button class="custom-button" style="background-color: #25D366; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" (click)="redirectToFurnitures()">
+                  Explore more on furnitures
+              </button>
+          </div>
       </div>
-    </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Billboard Section -->
   <section class="hero">
@@ -94,28 +98,24 @@
   </section>
 
   <!-- Team Section -->
-  <section class="team-section">
-    <div class="container">
-      <h2>Meet Our Team</h2>
-      <div class="team-container">
-        <div class="team-member">
-          <img src="assets/admin-pics/manu.jpeg" alt="Emmanuel Omuyonga">
-          <h3>Emmanuel Omuyonga</h3>
-          <p>CEO & Founder</p>
+  <section class="team-section" style="background-color: #f8f9fa; padding: 50px 0; text-align: center;">
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <h2 style="color: #333; font-size: 2rem; margin-bottom: 20px;">Meet Our Team</h2>
+        <div class="team-container" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div class="team-member" style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 700px; text-align: center;">
+                <img src="assets/admin-pics/manu.jpeg" alt="Tandy Ochieng" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+                <h3 style="color: #222; font-size: 1.5rem; margin-bottom: 10px;">Tandy Ochieng</h3>
+                <p style="color: #555; font-size: 1rem; line-height: 1.6; text-align: justify;">
+                    Tandy Ochieng is a visionary entrepreneur and the driving force behind Best Villas. With a deep passion for real estate and a commitment to excellence, he founded Best Villas to bridge the gap between individuals and their dream living spaces. His expertise in property management, market analysis, and customer relations has positioned Best Villas as a trusted name in the industry.
+                    <br><br>
+                    Under his leadership, Best Villas has grown into a premier real estate brand, offering high-quality housing solutions tailored to diverse client needs. Tandy believes in innovation, integrity, and personalized service, ensuring that every client receives the best value and experience.
+                    <br><br>
+                    Whether you're searching for a luxurious residence, a cozy getaway, or a strategic investment, Tandy and his team are dedicated to making your real estate journey seamless and rewarding.
+                </p>
+            </div>
         </div>
-        <div class="team-member">
-          <img src="assets/admin-pics/amin.jpeg" alt="Mohamed Amin">
-          <h3>Mohamed Amin</h3>
-          <p>Chief Operating Officer</p>
-        </div>
-        <div class="team-member">
-          <img src="assets/admin-pics/other.jpeg" alt="Abdirahman Harun">
-          <h3>Abdirahman Harun</h3>
-          <p>Head of Marketing</p>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
   <!-- Footer -->
   <footer style="background-color: #333; color: #fff; padding: 20px 0;">

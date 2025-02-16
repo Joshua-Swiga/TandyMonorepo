@@ -94,7 +94,7 @@ export class ViewEachUnitComponent implements OnInit {
   }
 
   redirectToWhatsApp(unitId: number | string) {
-    const phonenumber = '254757422260';
+    const phonenumber = '254752052297';
     const message = `https://cityhomeskenya.co.ke/book-unit/${unitId} \n\n\nHi there! Could you please provide more details about the unit mentioned above? Thank you!`;
     const url = `https://wa.me/${phonenumber}?text=${encodeURIComponent(message)}`;
     window.location.href = url;
